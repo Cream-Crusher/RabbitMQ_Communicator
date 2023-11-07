@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5673:5673"
+      - "15673:15673"
+
+  consumer:
+    build: application_consumer
+    container_name: application_consumer
+    hostname: application_consumer
+    network_mode: "host"
+    ports:
+      - "8001:8001"
+
+    depends_on:
+      - rabbitmq
+
+  publisher:
+    build: application_publisher
+    container_name: application_publisher
+    hostname: application_publisher
+    network_mode: "host"
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - rabbitmq
