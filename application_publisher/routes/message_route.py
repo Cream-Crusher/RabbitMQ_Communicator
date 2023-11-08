@@ -6,8 +6,7 @@ router = APIRouter()
 
 
 @router.post('/Message/', tags=['Message'])
-async def post_message(message: str):
-    routing_key = 'route_default'
+async def post_message(routing_key: str, message: str):
     await RabbitMQ().send_message(message, routing_key)
 
     return {"message": "Message sent"}

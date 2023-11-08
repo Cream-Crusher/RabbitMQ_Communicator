@@ -6,8 +6,7 @@ router = APIRouter()
 
 
 @router.get('/Message/', tags=['Message'])
-async def get_message():
-    routing_key = 'route_default'
+async def get_message(routing_key: str):
     message = await RabbitMQ().get_massege(routing_key)
 
     if message:
