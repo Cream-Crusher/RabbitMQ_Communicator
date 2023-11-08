@@ -11,7 +11,6 @@ async def get_message():
     message = await RabbitMQ().get_massege(routing_key)
 
     if message:
-        body = message.body.decode()
-        return {"message": body}
+        return {"message": message}
     else:
         return {"message": "No messages available"}

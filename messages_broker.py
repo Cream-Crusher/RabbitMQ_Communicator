@@ -23,6 +23,7 @@ class MessageBrokerRabbitMQ:
         message = await queue.get(timeout=5, fail=False)
         if message:  # Сообщение обработанно и удалено из очереди
             await message.ack()
+            message = message.body.decode()  # Обрабатываю сообщение
 
         await channel.close()  # закрытие канала
         await connection.close()  # закрытие соединения

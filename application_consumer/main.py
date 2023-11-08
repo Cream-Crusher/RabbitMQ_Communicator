@@ -1,6 +1,6 @@
-from routes import message_route
-
 from fastapi import FastAPI
+
+from routes import message_route
 
 app = FastAPI()
 
