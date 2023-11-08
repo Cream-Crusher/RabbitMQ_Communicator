@@ -9,18 +9,21 @@ services:
       - "15673:15673"
 
   consumer:
-    build: application_consumer
+    build:
+      context: .
+      dockerfile: ./application_consumer/Dockerfile
     container_name: application_consumer
     hostname: application_consumer
     network_mode: "host"
     ports:
       - "8001:8001"
-
     depends_on:
       - rabbitmq
 
   publisher:
-    build: application_publisher
+    build:
+      context: .
+      dockerfile: ./application_publisher/Dockerfile
     container_name: application_publisher
     hostname: application_publisher
     network_mode: "host"

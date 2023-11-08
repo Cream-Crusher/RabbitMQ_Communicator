@@ -2,10 +2,10 @@ FROM python:3.10
 
 WORKDIR /application_publisher
 
-COPY ./routes /application_publisher/routes
-COPY ./main.py /application_publisher/main.py
-COPY ./message_broker.py /application_publisher/message_broker.py
-COPY requirements.txt /application_publisher/requirements.txt
+COPY ./application_publisher/routes /application_publisher/routes
+COPY ./application_publisher/main.py /application_publisher/main.py
+COPY ./requirements.txt /application_publisher/requirements.txt
+COPY ./messages_broker.py /application_publisher/messages_broker.py
 
 RUN pip install -r requirements.txt
 
